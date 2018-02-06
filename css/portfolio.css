@@ -1,0 +1,125 @@
+*{
+  box-sizing: border-box;
+}
+body {
+  margin: 5%; /*I had auto here before but I got no margins*/
+}
+
+h1 {
+  text-decoration: underline;
+  font-weight: bolder;
+  text-align:left;
+  font-size: 27px;
+}
+
+.leftColumn {
+  width: 80%;
+}
+
+img {
+  position: absolute;
+  top: 20px;
+  right: 5%
+}
+
+.sample {
+  border: 1px solid black;
+  margin-top:30px;
+  width: 95%;
+}
+
+.allProjects {
+  overflow:hidden;
+  clear:both;
+}
+
+.project1 {
+border: 1px solid black;
+margin-top:3%;
+margin-right:1%;
+float: left;
+}
+
+.project2 {
+border: 1px solid black;
+margin-top: 3%;
+margin-right:1%;
+float:left;
+}
+
+.project3 {
+border: 1px solid black;
+margin-top:3%;
+float:left;
+}
+
+section > h2 {
+  background-color: red;
+}
+
+/* media queries */
+
+   /* large screen */
+   @media (min-width: 992px){
+     body {
+       position: relative;
+       width:100%;
+     }
+     .project1 {
+       width:31%;
+       text-align:left;
+     }
+     .project2 {
+       width:31%;
+       text-align:center;
+     }
+     .project3 {
+       width:31%;
+       text-align:right;
+     }
+   }
+   @media (min-width: 768px) and (max-width: 991px){
+     body {
+       position: relative;
+       /*left: 10%;*/
+       width:100%;
+     }
+     .project1 {
+       width:47.0625%;
+       text-align:left;
+     }
+     .project2 {
+       width:47.0625%;
+       margin-right:0%;
+       text-align:right;
+     }
+     .project3 {
+       width:95%;
+       text-align:center;
+     }
+   }
+   @media (max-width: 767px){
+     body {
+       position: static;
+       /*left: 10%;*//*Project not showing vert.*/
+       width:100%;
+     }
+
+     .project1 {
+       width:100%;
+       text-align:left;
+     }
+     .project2 {
+       width:100%;
+       text-align:left;
+     }
+     .project3 {
+       width:100%;
+       text-align:left;
+     }
+     img {
+       width:50px;
+       height:75px;
+     }
+
+   }

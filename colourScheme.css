@@ -14,6 +14,7 @@ Dark Neon Colour Scheme
 .color-primary-4 { color: #3E2D00 }h3
 
 */
+
 .manageText {
   text-align: center;
   color: #EBAA02;
@@ -23,6 +24,9 @@ h1 {
 }
 h2 {
   color: #BA8A0B;
+  position: relative;
+  top: 20px;
+  left:50px;
 }
 h3 {
   color: #694C00;
@@ -30,9 +34,12 @@ h3 {
 }
 body {
   background-color: #323232;
+  display: block;
+  margin: 8px;
 }
 p {
   color: #cccccc;
+  border:
 }
 a:link {
     color: silver;
