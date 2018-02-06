@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 body {
-  margin: 5%; /*I had auto here before but I got no margins*/
+  margin: auto; /*I had auto here before but I got no margins*/
 }
 
 h1 {
@@ -12,6 +12,10 @@ h1 {
   font-size: 27px;
 }
 
+.introductionBox {
+  width: 95%;
+}
+
 .leftColumn {
   width: 80%;
 }
@@ -19,7 +23,7 @@ h1 {
 img {
   position: absolute;
   top: 20px;
-  right: 5%
+  right: 1%
 }
 
 .sample {
@@ -63,18 +67,21 @@ section > h2 {
    @media (min-width: 992px){
      body {
        position: relative;
-       width:100%;
+       width:80%;
+     }
+     .sample {
+       width: 100%;
      }
      .project1 {
-       width:31%;
+       width:32.5%;
        text-align:left;
      }
      .project2 {
-       width:31%;
+       width:32.5%;
        text-align:center;
      }
      .project3 {
-       width:31%;
+       width:32.5%;
        text-align:right;
      }
    }
@@ -82,39 +89,45 @@ section > h2 {
      body {
        position: relative;
        /*left: 10%;*/
-       width:100%;
+       width:90%;
+     }
+     .sample {
+       width: 100%;
      }
      .project1 {
-       width:47.0625%;
+       width:49.5%;
        text-align:left;
      }
      .project2 {
-       width:47.0625%;
+       width:49.5%;
        margin-right:0%;
        text-align:right;
      }
      .project3 {
-       width:95%;
+       width:100%;
        text-align:center;
      }
    }
    @media (max-width: 767px){
      body {
-       position: static;
-       /*left: 10%;*//*Project not showing vert.*/
-       width:100%;
+       position: relative;
+       width:99%;
      }
-
+     .sample {
+       width: 99%;
+     }
      .project1 {
-       width:100%;
+       width:99%;
+       margin-right:0%;
        text-align:left;
      }
      .project2 {
-       width:100%;
+       width:99%;
+       margin-right:0%;
        text-align:left;
      }
      .project3 {
-       width:100%;
+       width:99%;
        text-align:left;
      }
      img {
