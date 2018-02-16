@@ -1,0 +1,64 @@
+/*
+Dark Neon Colour Scheme
+*/
+/* CSS - Cascading Style Sheet */
+/* Palette color codes */
+/* Palette URL: http://paletton.com/#uid=1160u0kuiiUvNtru4nlwudexs7O */
+
+/* As hex codes */
+
+/*
+.color-primary-1 { color: #EBAA02 }
+.color-primary-2 { color: #BA8A0B }
+.color-primary-3 { color: #694C00 } h2
+.color-primary-4 { color: #3E2D00 }h3
+
+*/
+
+.manageText {
+  text-align: center;
+  color: #EBAA02;
+}
+h1 {
+  color: #EBAA02;
+}
+h2 {
+  color: #BA8A0B;
+  position: relative;
+  top: 20px;
+  left:50px;
+}
+h3 {
+  color: #694C00;
+  font-weight:bold;
+}
+body {
+  background-color: #323232;
+  display: block;
+  margin: 8px;
+}
+p {
+  color: #cccccc;
+  border:
+}
+a:link {
+    color: silver;
+}
+
+/* visited link */
+a:visited {
+    color: silver;
+}
+
+/* mouse over link */
+a:hover {
+    color: red;
+}
+
+/* selected link */
+a:active {
+    color: purple;
+}
+ul li{
+    color: yellow
+}
