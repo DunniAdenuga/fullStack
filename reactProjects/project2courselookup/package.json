@@ -1,7 +1,7 @@
 {
   "name": "project2courselookup",
   "version": "0.1.0",
-  "homepage": "https://dunniadenuga.github.io/fullStack/reactProjects/project2courselookup/release/v1.0",
+  "homepage": "http://dunniadenuga.github.io/fullStack/reactProjects/project2courselookup/release/v1.0",
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0",

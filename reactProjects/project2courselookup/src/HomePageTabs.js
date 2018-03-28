@@ -40,6 +40,7 @@ class HomePageTabs extends Component {
       value: 0,
       value2: 0,
       allClasses: [],
+      allTimeClasses: [],
       showSpecificClasses: false,
       profName: '',
       profButton: false,
@@ -79,7 +80,8 @@ class HomePageTabs extends Component {
   }
 
    getData(){
-    var matchingClasses = []
+    //var matchingClasses = []
+    this.state.allTimeClasses = []
     var day = ''
     var time = ''
     var daySign = ''
@@ -95,18 +97,18 @@ class HomePageTabs extends Component {
           console.log("daySign: " + daySign)
           if(daySign.length > 1){
             if((daySign[0].search(day) != -1) && (daySign[1].search(time) != -1)) {
-              matchingClasses.push(this.state.allClasses[i])
+              this.state.allTimeClasses.push(this.state.allClasses[i])
             }
           }
         }
-        return this.displayList(matchingClasses)
+        return this.displayTimeClasses()
     }
   }
 }
 
- displayList(matchingClasses){
-   console.log("matchingClasses: " + matchingClasses.length)
-    var allClass = matchingClasses.map(m =>
+ displayTimeClasses(){
+   console.log("this.state.allTimeClasses: " + this.state.allTimeClasses.length)
+    var allClass = this.state.allTimeClasses.map(m =>
       <div class="mx-auto justify-content-center col-8 pb-5">
       <Card>
         <CardHeader
@@ -128,17 +130,18 @@ class HomePageTabs extends Component {
     )
     return(
       <div>
-      <h2>{matchingClasses.length} matches </h2>
+      <h2>{this.state.allTimeClasses.length} matches </h2>
       {allClass}
       </div>
     );
   }
 
   getProfClasses(){
+    //this.state.allProfClasses = []
     if((this.state.profButton) && (this.state.profName != '')){
       var temp =  this.state.profName
       console.log("getProf")
-      const url = 'http://www.eg.bucknell.edu/~amm042/service/q?text='+ temp+'&limit=99999'
+      const url = 'https://www.eg.bucknell.edu/~amm042/service/q?text='+ temp+'&limit=99999'
       fetch(url)
       .then(rsp => rsp.json())
       .then(allPC => {
@@ -184,10 +187,11 @@ class HomePageTabs extends Component {
 
   getReqCourses(){
     //look into getting semester first
+    //this.state.allReqClasses = []
     if(this.state.req != ''){
       console.log(this.state.req)
       var temp = this.state.req
-      const url = 'http://eg:48484/q?CCCReq=' + temp +'&limit=99999'
+      const url = 'https://www.eg.bucknell.edu/~amm042/service/q?CCCReq=' + temp +'&limit=99999'
       fetch(url)
       .then(rsp => rsp.json())
       .then(allRC => {
@@ -232,7 +236,7 @@ class HomePageTabs extends Component {
   }
 
   componentWillMount(){
-    const url = 'http://www.eg.bucknell.edu/~amm042/service/q?limit=99999'
+    const url = 'https://www.eg.bucknell.edu/~amm042/service/q?limit=99999'
     fetch(url)
     .then(rsp => rsp.json())
     .then(allC => {
