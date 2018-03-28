@@ -263,8 +263,6 @@ class HomePageTabs extends Component {
           </SelectField>
           </div>
 
-          <br />
-
           <div class="col-4">
           <SelectField
           multiple={false}
@@ -286,11 +284,7 @@ class HomePageTabs extends Component {
           </div>
 
         </div>
-
-
         {this.getData()}
-
-
       </Tab>
 
       <Tab
