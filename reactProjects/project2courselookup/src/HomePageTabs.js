@@ -10,6 +10,7 @@ import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import AutoComplete from 'material-ui/AutoComplete';
 
 const days = [
   <MenuItem value={1} primaryText="Monday" />,
@@ -18,6 +19,13 @@ const days = [
   <MenuItem value={4} primaryText="Thursday" />,
   <MenuItem value={5} primaryText="Friday" />,
 ];
+
+/*
+<RadioButtonGroup onChange={(event, value)=>this.setState({req: value})}>
+
+
+</RadioButtonGroup>
+*/
 
 const times = [
   <MenuItem value={6} primaryText="8:00 am" />,
@@ -33,6 +41,26 @@ const times = [
   <MenuItem value={16} primaryText="7:00 pm" />,
 ];
 
+const CCCReqs = [
+  {textKey: 'Foundation Seminar', valueKey: 'FOUN'},
+  {textKey: 'Integrated Perspectives', valueKey: 'CCIP'},
+  {textKey: 'Foreign language', valueKey: 'CCFL'},
+  {textKey: 'Natural Sciences & Mathematics', valueKey: 'NMLG'},
+  {textKey: 'Lab science', valueKey: 'LBSC'},
+  {textKey: 'Arts & Humanities', valueKey: 'AHLG'},
+  {textKey: 'Social Sciences', valueKey: 'SSLG'},
+  {textKey: 'Diversity in the U.S', valueKey: 'DUSC'},
+  {textKey: 'Environmental Connections', valueKey: 'EVCN'},
+  {textKey: 'Global Connections', valueKey: 'GBCC'},
+  {textKey: 'Quantitative Reasoning', valueKey: 'CCQR'},
+  {textKey: 'Writing Requirement 1', valueKey: 'W1'},
+  {textKey: 'Writing Requirement 2', valueKey: 'W2'},
+];
+const dataSourceConfig = {
+  text: 'textKey',
+  value: 'valueKey',
+};
+
 class HomePageTabs extends Component {
   constructor(props){
     super(props)
@@ -45,7 +73,7 @@ class HomePageTabs extends Component {
       profName: '',
       profButton: false,
       allProfClasses: [],
-      req: '',
+      req: -1,
       allReqClasses: [],
     }
   }
@@ -81,7 +109,7 @@ class HomePageTabs extends Component {
 
    getData(){
     //var matchingClasses = []
-    this.state.allTimeClasses = []
+    //this.state.allTimeClasses = []
     var day = ''
     var time = ''
     var daySign = ''
@@ -116,15 +144,13 @@ class HomePageTabs extends Component {
           subtitle={m.Title}
         />
         <CardText>
-          <p>Time: {m["Meeting Time"]}</p>
-          <p>Location: {m.Room}</p>
-          <p>Instructor: {m.Instructor}</p>
-          <div dangerouslySetInnerHTML={{ __html: m.CrseDesc}} />
+          <p><b>CRN</b>: {m.CRN}</p>
+          <p><b>Time</b>: {m["Meeting Time"]}</p>
+          <p><b>Location</b>: {m.Room}</p>
+          <p><b>Instructor</b>: {m.Instructor}</p>
+          <p><b>CCCReq</b>: {m.CCCReq.toString()}</p>
+          <div dangerouslySetInnerHTML={{ __html: m.CrseDesc.substring(0, 9) + "http://www.bannerssb.bucknell.edu" + m.CrseDesc.substring(9, m.CrseDesc.length)}} />
         </CardText>
-
-        <CardActions>
-          <FlatButton label="Comment" />
-        </CardActions>
       </Card>
     </div>
     )
@@ -165,15 +191,13 @@ class HomePageTabs extends Component {
            subtitle={m.Title}
          />
          <CardText>
-           <p>Time: {m["Meeting Time"]}</p>
-           <p>Location: {m.Room}</p>
-           <p>Instructor: {m.Instructor}</p>
-           <div dangerouslySetInnerHTML={{ __html: m.CrseDesc}} />
+           <p><b>CRN</b>: {m.CRN}</p>
+           <p><b>Time</b>: {m["Meeting Time"]}</p>
+           <p><b>Location</b>: {m.Room}</p>
+           <p><b>Instructor</b>: {m.Instructor}</p>
+           <p><b>CCCReq</b>: {m.CCCReq.toString()}</p>
+           <div dangerouslySetInnerHTML={{ __html: m.CrseDesc.substring(0, 9) + "http://www.bannerssb.bucknell.edu" + m.CrseDesc.substring(9, m.CrseDesc.length)}} />
          </CardText>
-
-         <CardActions>
-           <FlatButton label="Comment" />
-         </CardActions>
        </Card>
      </div>
      )
@@ -188,9 +212,9 @@ class HomePageTabs extends Component {
   getReqCourses(){
     //look into getting semester first
     //this.state.allReqClasses = []
-    if(this.state.req != ''){
+    if(this.state.req != -1){
       console.log(this.state.req)
-      var temp = this.state.req
+      var temp = CCCReqs[this.state.req].valueKey
       const url = 'https://www.eg.bucknell.edu/~amm042/service/q?CCCReq=' + temp +'&limit=99999'
       fetch(url)
       .then(rsp => rsp.json())
@@ -215,15 +239,13 @@ class HomePageTabs extends Component {
            subtitle={m.Title}
          />
          <CardText>
-           <p>Time: {m["Meeting Time"]}</p>
-           <p>Location: {m.Room}</p>
-           <p>Instructor: {m.Instructor}</p>
-           <div dangerouslySetInnerHTML={{ __html: m.CrseDesc}} />
+           <p><b>CRN</b>: {m.CRN}</p>
+           <p><b>Time</b>: {m["Meeting Time"]}</p>
+           <p><b>Location</b>: {m.Room}</p>
+           <p><b>Instructor</b>: {m.Instructor}</p>
+           <p><b>CCCReq</b>: {m.CCCReq.toString()}</p>
+           <div dangerouslySetInnerHTML={{ __html: m.CrseDesc.substring(0, 9) + "http://www.bannerssb.bucknell.edu" + m.CrseDesc.substring(9, m.CrseDesc.length)}} />
          </CardText>
-
-         <CardActions>
-           <FlatButton label="Comment" />
-         </CardActions>
        </Card>
      </div>
      )
@@ -314,73 +336,14 @@ class HomePageTabs extends Component {
         icon={<FontIcon className="material-icons">check_circle</FontIcon>}
         label="Search by Requirements" >
         <div class="row justify-content-center mt-3">
-          <RadioButtonGroup onChange={(event, value)=>this.setState({req: value})}>
-            <RadioButton
-            value="FOUN"
-            label="Foundation Seminar"
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="NMLG"
-            label="Natural Sciences & Mathematics"
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="LBSC"
-            label="Lab science"
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="CCFL"
-            label="Foreign language"
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="CCIP"
-            label="Integrated Perspectives"
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="AHLG"
-            label="Arts & Humanities"
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="SSLG"
-            label="Social Sciences"
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="DUSC"
-            label="Diversity in the U.S."
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="EVCN"
-            label="Environmental Connections"
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="GBCC"
-            label="Global Connections"
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="CCQR"
-            label="Quantitative Reasoning"
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="W1"
-            label="Writing Requirement 1"
-            style={{marginBottom: 16,}}
-            />
-            <RadioButton
-            value="W2"
-            label="Writing Requirement 2"
-            style={{marginBottom: 16,}}
-            />
-          </RadioButtonGroup>
+        <AutoComplete
+        floatingLabelText="Type in Requirement"
+        filter={AutoComplete.fuzzyFilter}
+        openOnFocus={false}
+        dataSource={CCCReqs}
+        dataSourceConfig={dataSourceConfig}
+        onNewRequest={(chosenRequest, index)=> this.setState({req: index})}
+      />
         </div>
         {this.getReqCourses()}
       </Tab>
